@@ -16,121 +16,86 @@
 </head>
 <body>
 
-    <nav>
+    <nav class="cyan darken-2" >
         <div class="nav-wrapper container">
             <a href="#!" class="brand-logo">Aaron Putterman</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Work</a></li>
+                <li><a href="./index.html">Work</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Bookmarks</a></li>
                 <li><a href="#">Résumé</a></li>
             </ul>
         </div>
     </nav>
+    <div class="container" id="workContainer"></div>
 
-    <div class="container work-body-container">
-        <div class="row">
-            
+
+    <script>
+
+        // get container
+        // loop over json
+            // every 3, create new row
+            // add object to row
+
+        const xhr = new XMLHttpRequest(), url = "./assets/json/work.json";
+        let output = "";
+        let count = 0;
+
+        xhr.onreadystatechange = function() {
+            if ( xhr.readyState === 4 && xhr.status === 200 ) {
+                const workItems = JSON.parse( xhr.responseText );
+                for (let workItem of workItems) {
+                    // if beginning of new row, add row start TODO
+                    if(count % 3 == 0){
+                        output += `<div class="row">`;
+                    }
+                    output += templateTron(workItem);
+                    ++count;
+                    // if end of row, or index = length-1, add row end TODO
+                    if(count % 3 == 3 || count == workItems.length){
+                        output += `</div>`;
+                    }
+                }
+                document.getElementById('workContainer').innerHTML = output;
+            }
+        };
+        xhr.open( "GET", url, true );
+        xhr.send();
+
+        // Good place to put that function that will generate the template html
+        function templateTron(workItem) {
+            let linkObjChain = "";
+            for(let linkObj of workItem.links){
+                linkObjChain += linkObjChainGenerator(linkObj);
+            }
+            return `
             <div class="col s4">
-                <div class="card medium">
-                    <div class="card-image">
-                        <img src="./assets/imgs/andre-bot.png">
-                        <span class="card-title">Andre Bot</span>
+                <div class="card small">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="${workItem.img}">
                     </div>
                     <div class="card-content">
-                        <p>A Discord built to transcribe voice channels into desired text channels.</p>
+                        <span class="card-title activator grey-text text-darken-4" style="margin-top:-10px;">${workItem.title}<i class="material-icons right">+</i></span>
+                        <div class="card-action" style="border:none">
+                            ` + linkObjChain + `
+                        </div>
                     </div>
-                    <div class="card-action">
-                        <a href="https://github.com/SI-Squad/andre-bot" target="_blank">GitHub</a>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">${workItem.title}<i class="material-icons right">-</i></span>
+                        <p>${workItem.description}</p>
                     </div>
                 </div>
             </div>
-            
-            <div class="col s4">
-                <div class="card medium">
-                    <div class="card-image">
-                        <img src="./assets/imgs/discord-bot-tutorial.png">
-                        <span class="card-title">Discord Bot Tutorial</span>
-                    </div>
-                    <div class="card-content">
-                        <p>A detailed set of instructions for creating and deploying a Discord bot (for free).</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="https://github.com/abp6318/Discord-Bot-Boilerplate" target="_blank">GitHub</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col s4">
-                <div class="card medium">
-                    <div class="card-image">
-                        <img src="./assets/imgs/critical-reminders.png">
-                        <span class="card-title">Critical Reminders</span>
-                    </div>
-                    <div class="card-content">
-                        <p>A Chrome extension built that web-scrapes assignments and adds them to .ics files.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="https://github.com/SI-Squad/Critical-Reminders">GitHub</a>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
+            `;
+        }
 
-        <div class="row">
-
-            <div class="col s4">
-                <div class="card medium">
-                    <div class="card-image">
-                        <img src="./assets/imgs/chrome-extension-boilerplate.png">
-                        <span class="card-title">Chrome Extension (v2) Tutorial</span>
-                    </div>
-                    <div class="card-content">
-                        <p>A detailed set of instructions for constructing a basic Chrome Extension, and how to publish it.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="https://github.com/abp6318/Chrome-Extentension-Boilerplate" target="_blank">GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s4">
-                <div class="card medium">
-                    <div class="card-image">
-                        <img src="./assets/imgs/web-hosting.png">
-                        <span class="card-title">Web Hosting</span>
-                    </div>
-                    <div class="card-content">
-                        <p>A detailed set of instructions on how to host web applications. Little to no cost involved if a current student.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="./assets/zips/Web Hosting - Aaron Putterman.zip" target="_blank">.ZIP</a>
-                        <a href="https://github.com/abp6318/RIT-Web-Hosting-Info" target="_blank">GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s4">
-                <div class="card medium">
-                    <div class="card-image">
-                        <img src="./assets/imgs/database-hosting.png">
-                        <span class="card-title">Database Hosting</span>
-                    </div>
-                    <div class="card-content">
-                        <p>A detailed set of instructions on how to host MySQL and MongoDB databases.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="./assets/zips/Database Hosting - Aaron Putterman.zip" target="_blank">.ZIP</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        
-    </div>
-      
+        function linkObjChainGenerator(linkObj){
+            return `
+                <a href="${linkObj.link}" class="cyan-text text-darken-4">${linkObj.title}</a>
+            `;
+        }
+    </script>
     
 </body>
 </html>

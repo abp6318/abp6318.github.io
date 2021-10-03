@@ -1,0 +1,72 @@
+[
+    {
+        "title":"Andre Bot",
+        "img":"./assets/imgs/andre-bot.png",
+        "links":[
+            {
+                "title":"GitHub",
+                "link":"https://github.com/SI-Squad/andre-bot"
+            }
+        ],
+        "description":"A Discord built to transcribe voice channels into desired text channels."
+    },
+    {
+        "title":"Discord Bot Tutorial",
+        "img":"./assets/imgs/discord-bot-tutorial.png",
+        "links":[
+            {
+                "title":"GitHub",
+                "link":"https://github.com/abp6318/Discord-Bot-Boilerplate"
+            }
+        ],
+        "description":"A detailed set of instructions for creating and deploying a Discord bot (for free)."
+    },
+    {
+        "title":"Critical Reminders",
+        "img":"./assets/imgs/critical-reminders.png",
+        "links":[
+            {
+                "title":"GitHub",
+                "link":"https://github.com/SI-Squad/Critical-Reminders"
+            }
+        ],
+        "description":"A Chrome extension built to web-scrape assignments from MyCourses and add them to .ics files."
+    },
+    {
+        "title":"Chrome Extension (v2) Tutorial",
+        "img":"./assets/imgs/chrome-extension-boilerplate.png",
+        "links":[
+            {
+                "title":"GitHub",
+                "link":"https://github.com/abp6318/Chrome-Extentension-Boilerplate"
+            }
+        ],
+        "description":"A detailed set of instructions for constructing a basic Chrome Extension, and how to publish it."
+    },
+    {
+        "title":"Web Hosting",
+        "img":"./assets/imgs/web-hosting.png",
+        "links":[
+            {
+                "title":".ZIP",
+                "link":"./assets/zips/Web Hosting - Aaron Putterman.zip"
+            },
+            {
+                "title":"GitHub",
+                "link":"https://github.com/abp6318/RIT-Web-Hosting-Info"
+            }
+        ],
+        "description":"A detailed set of instructions on how to host web applications. Little to no cost involved if a current student."
+    },
+    {
+        "title":"Database Hosting",
+        "img":"./assets/imgs/database-hosting.png",
+        "links":[
+            {
+                "title":".ZIP",
+                "link":"./assets/zips/Database Hosting - Aaron Putterman.zip"
+            }
+        ],
+        "description":"A detailed set of instructions on how to host MySQL and MongoDB databases."
+    }
+]
