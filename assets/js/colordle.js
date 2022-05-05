@@ -3,9 +3,9 @@
 let rAnswer = Math.floor(Math.random() * 256);
 let gAnswer = Math.floor(Math.random() * 256);
 let bAnswer = Math.floor(Math.random() * 256);
-console.log(rAnswer);
-console.log(gAnswer);
-console.log(bAnswer);
+// console.log(rAnswer);
+// console.log(gAnswer);
+// console.log(bAnswer);
 
 var form = document.createElement("FORM");
 
