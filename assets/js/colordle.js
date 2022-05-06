@@ -6,6 +6,7 @@ let bAnswer = Math.floor(Math.random() * 256);
 // console.log(rAnswer);
 // console.log(gAnswer);
 // console.log(bAnswer);
+// console.log("-------");
 
 var form = document.createElement("FORM");
 
@@ -277,11 +278,11 @@ document.getElementById("submitButton").addEventListener("click", function(){
     if(rSelectValue < rAnswer){
         // set guess color to too low
         // check
-        if(rClosestBelow < rSelectValue){
+        if(rClosestBelow <= rSelectValue){
             rClosestBelow = rSelectValue + 1;
         }
     }else if(rSelectValue > rAnswer){
-        if(rClosestAbove > rSelectValue){
+        if(rClosestAbove >= rSelectValue){
             rClosestAbove = rSelectValue - 1;
         }
     } else {
@@ -302,11 +303,11 @@ document.getElementById("submitButton").addEventListener("click", function(){
     if(gSelectValue < gAnswer){
         // set guess color to too low
         // check
-        if(gClosestBelow < gSelectValue){
+        if(gClosestBelow <= gSelectValue){
             gClosestBelow = gSelectValue + 1;
         }
     }else if(gSelectValue > gAnswer){
-        if(gClosestAbove > gSelectValue){
+        if(gClosestAbove >= gSelectValue){
             gClosestAbove = gSelectValue - 1;
         }
     } else {
@@ -326,11 +327,11 @@ document.getElementById("submitButton").addEventListener("click", function(){
     if(bSelectValue < bAnswer){
         // set guess color to too low
         // check
-        if(bClosestBelow < bSelectValue){
+        if(bClosestBelow <= bSelectValue){
             bClosestBelow = bSelectValue + 1;
         }
     }else if(bSelectValue > bAnswer){
-        if(bClosestAbove > bSelectValue){
+        if(bClosestAbove >= bSelectValue){
             bClosestAbove = bSelectValue - 1;
         }
     } else {
@@ -344,6 +345,21 @@ document.getElementById("submitButton").addEventListener("click", function(){
         document.getElementById("ba1").disabled = true;
         document.getElementById("ba10").disabled = true;
         document.getElementById("ba100").disabled = true;
+    }
+
+    // disable form and display victory info
+    if(rSelectValue == rAnswer && gSelectValue == gAnswer && bSelectValue == bAnswer){
+        document.getElementById("submitButton").disabled = true;
+
+        var victory = document.createElement("DIV");
+        // victory.id = "victory";
+        victory.innerText = "You've done it! Shareable links and exports to be added soon.";
+        victory.style.textAlign = "center";
+        // victory.style.backgroundColor = "white";
+        victory.style.color = setContrast(rAnswer, gAnswer, bAnswer);
+        victory.classList = "text";
+        victory.style.textShadow = "1px 0px " + setContrastReverse(rAnswer, gAnswer, bAnswer);
+        document.body.insertBefore(victory, document.body.firstChild);
     }
 
     var submissionBlock = document.createElement("DIV");
@@ -368,6 +384,12 @@ document.getElementById("submitButton").addEventListener("click", function(){
     document.getElementById("rSelect").value = rClosestBelow;
     document.getElementById("gSelect").value = gClosestBelow;
     document.getElementById("bSelect").value = bClosestBelow;
+    // console.log(rClosestAbove);
+    // console.log(rClosestBelow);
+    // console.log(gClosestAbove);
+    // console.log(gClosestBelow);
+    // console.log(bClosestAbove);
+    // console.log(bClosestBelow);
 });
 
 
