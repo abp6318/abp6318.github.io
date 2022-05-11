@@ -1,427 +1,107 @@
-
-// generate answer values
-let rAnswer = Math.floor(Math.random() * 256);
-let gAnswer = Math.floor(Math.random() * 256);
-let bAnswer = Math.floor(Math.random() * 256);
-// console.log(rAnswer);
-// console.log(gAnswer);
-// console.log(bAnswer);
-// console.log("-------");
-
-var form = document.createElement("FORM");
-
-document.body.style.backgroundColor = "rgb(" + rAnswer + "," + gAnswer + "," + bAnswer + ")";
-
-// variables
-let rClosestAbove = 255;
-let rClosestBelow = 0;
-let gClosestAbove = 255;
-let gClosestBelow = 0;
-let bClosestAbove = 255;
-let bClosestBelow = 0;
-
-document.getElementById("rSelect").value = 0;
-document.getElementById("gSelect").value = 0;
-document.getElementById("bSelect").value = 0;
-
-document.getElementById("rSelect").min = 0;
-document.getElementById("gSelect").min = 0;
-document.getElementById("bSelect").min = 0;
-document.getElementById("rSelect").max = 255;
-document.getElementById("gSelect").max = 255;
-document.getElementById("bSelect").max = 255;
-
-function checkInputRed(e){
-    // console.log(e.value);
-    if(e.value < rClosestBelow){
-        e.value = rClosestBelow;
+if (localStorage.getItem("colordle") === null) {
+    var colordle = {
+        rAnswer: 0,
+        gAnswer: 0,
+        bAnswer: 0,
+        rClosestAbove: 255,
+        rClosestBelow: 0,
+        gClosestAbove: 255,
+        gClosestBelow: 0,
+        bClosestAbove: 255,
+        bClosestBelow: 0,
+        guesses: []
     }
-    if(e.value > rClosestAbove){
-        e.value = rClosestAbove;
-    }
-}
-
-function checkInputGreen(e){
-    // console.log(e.value);
-    if(e.value < gClosestBelow){
-        e.value = gClosestBelow;
-    }
-    if(e.value > gClosestAbove){
-        e.value = gClosestAbove;
-    }
-}
-
-function checkInputBlue(e){
-    // console.log(e.value);
-    if(e.value < bClosestBelow){
-        e.value = bClosestBelow;
-    }
-    if(e.value > bClosestAbove){
-        e.value = bClosestAbove;
-    }
-}
-
-// onclicks for rSelect
-    document.getElementById("ra1").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("rSelect").value) + 1;
-        if(temp < rClosestBelow){
-            temp = rClosestBelow;
-        }
-        if(temp > rClosestAbove){
-            temp = rClosestAbove;
-        }
-        document.getElementById("rSelect").value = temp; 
-    });
-
-    document.getElementById("ra10").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("rSelect").value) + 10;
-        if(temp < rClosestBelow){
-            temp = rClosestBelow;
-        }
-        if(temp > rClosestAbove){
-            temp = rClosestAbove;
-        }
-        document.getElementById("rSelect").value = temp; 
-    });
-
-    document.getElementById("ra100").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("rSelect").value) + 100;
-        if(temp < rClosestBelow){
-            temp = rClosestBelow;
-        }
-        if(temp > rClosestAbove){
-            temp = rClosestAbove;
-        }
-        document.getElementById("rSelect").value = temp; 
-    });
-
-    document.getElementById("rm1").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("rSelect").value) - 1;
-        if(temp < rClosestBelow){
-            temp = rClosestBelow;
-        }
-        if(temp > rClosestAbove){
-            temp = rClosestAbove;
-        }
-        document.getElementById("rSelect").value = temp; 
-    });
-
-    document.getElementById("rm10").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("rSelect").value) - 10;
-        if(temp < rClosestBelow){
-            temp = rClosestBelow;
-        }
-        if(temp > rClosestAbove){
-            temp = rClosestAbove;
-        }
-        document.getElementById("rSelect").value = temp; 
-    });
-
-    document.getElementById("rm100").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("rSelect").value) - 100;
-        if(temp < rClosestBelow){
-            temp = rClosestBelow;
-        }
-        if(temp > rClosestAbove){
-            temp = rClosestAbove;
-        }
-        document.getElementById("rSelect").value = temp; 
-    });
-
-// onclicks for gSelect
-    document.getElementById("ga1").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("gSelect").value) + 1;
-        if(temp < gClosestBelow){
-            temp = gClosestBelow;
-        }
-        if(temp > gClosestAbove){
-            temp = gClosestAbove;
-        }
-        document.getElementById("gSelect").value = temp; 
-    });
-
-    document.getElementById("ga10").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("gSelect").value) + 10;
-        if(temp < gClosestBelow){
-            temp = gClosestBelow;
-        }
-        if(temp > gClosestAbove){
-            temp = gClosestAbove;
-        }
-        document.getElementById("gSelect").value = temp; 
-    });
-
-    document.getElementById("ga100").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("gSelect").value) + 100;
-        if(temp < gClosestBelow){
-            temp = gClosestBelow;
-        }
-        if(temp > gClosestAbove){
-            temp = gClosestAbove;
-        }
-        document.getElementById("gSelect").value = temp; 
-    });
-
-    document.getElementById("gm1").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("gSelect").value) - 1;
-        if(temp < gClosestBelow){
-            temp = gClosestBelow;
-        }
-        if(temp > gClosestAbove){
-            temp = gClosestAbove;
-        }
-        document.getElementById("gSelect").value = temp; 
-    });
-
-    document.getElementById("gm10").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("gSelect").value) - 10;
-        if(temp < gClosestBelow){
-            temp = gClosestBelow;
-        }
-        if(temp > gClosestAbove){
-            temp = gClosestAbove;
-        }
-        document.getElementById("gSelect").value = temp; 
-    });
-
-    document.getElementById("gm100").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("gSelect").value) - 100;
-        if(temp < gClosestBelow){
-            temp = gClosestBelow;
-        }
-        if(temp > gClosestAbove){
-            temp = gClosestAbove;
-        }
-        document.getElementById("gSelect").value = temp; 
-    });
-
-// onclicks for bSelects
-    document.getElementById("ba1").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("bSelect").value) + 1;
-        if(temp < bClosestBelow){
-            temp = bClosestBelow;
-        }
-        if(temp > bClosestAbove){
-            temp = bClosestAbove;
-        }
-        document.getElementById("bSelect").value = temp; 
-    });
-
-    document.getElementById("ba10").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("bSelect").value) + 10;
-        if(temp < bClosestBelow){
-            temp = bClosestBelow;
-        }
-        if(temp > bClosestAbove){
-            temp = bClosestAbove;
-        }
-        document.getElementById("bSelect").value = temp; 
-    });
-
-    document.getElementById("ba100").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("bSelect").value) + 100;
-        if(temp < bClosestBelow){
-            temp = bClosestBelow;
-        }
-        if(temp > bClosestAbove){
-            temp = bClosestAbove;
-        }
-        document.getElementById("bSelect").value = temp; 
-    });
-
-    document.getElementById("bm1").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("bSelect").value) - 1;
-        if(temp < bClosestBelow){
-            temp = bClosestBelow;
-        }
-        if(temp > bClosestAbove){
-            temp = bClosestAbove;
-        }
-        document.getElementById("bSelect").value = temp; 
-    });
-
-    document.getElementById("bm10").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("bSelect").value) - 10;
-        if(temp < bClosestBelow){
-            temp = bClosestBelow;
-        }
-        if(temp > bClosestAbove){
-            temp = bClosestAbove;
-        }
-        document.getElementById("bSelect").value = temp; 
-    });
-
-    document.getElementById("bm100").addEventListener("click", function(){ 
-        let temp = parseInt(document.getElementById("bSelect").value) - 100;
-        if(temp < bClosestBelow){
-            temp = bClosestBelow;
-        }
-        if(temp > bClosestAbove){
-            temp = bClosestAbove;
-        }
-        document.getElementById("bSelect").value = temp; 
-    });
-
-
-// button onclick event
-document.getElementById("submitButton").addEventListener("click", function(){
-    // console.log("submit");
-    let rSelectValue = parseInt(document.getElementById("rSelect").value);
-    let gSelectValue = parseInt(document.getElementById("gSelect").value);
-    let bSelectValue = parseInt(document.getElementById("bSelect").value);
-    // console.log(rSelectValue);
-    // console.log(gSelectValue);
-    // console.log(bSelectValue);
-
-    // manage submissions
-    // rSelect
-    if(rSelectValue < rAnswer){
-        // set guess color to too low
-        // check
-        if(rClosestBelow <= rSelectValue){
-            rClosestBelow = rSelectValue + 1;
-        }
-    }else if(rSelectValue > rAnswer){
-        if(rClosestAbove >= rSelectValue){
-            rClosestAbove = rSelectValue - 1;
-        }
-    } else {
-        // answer is correct & only option is now the correct answer
-        rClosestBelow = rSelectValue;
-        rClosestAbove = rSelectValue;
-        document.getElementById("rSelect").disabled = true;
-        document.getElementById("rm100").disabled = true;
-        document.getElementById("rm10").disabled = true;
-        document.getElementById("rm1").disabled = true;
-        document.getElementById("ra1").disabled = true;
-        document.getElementById("ra10").disabled = true;
-        document.getElementById("ra100").disabled = true;
-
-    }
-
-    // gSelect
-    if(gSelectValue < gAnswer){
-        // set guess color to too low
-        // check
-        if(gClosestBelow <= gSelectValue){
-            gClosestBelow = gSelectValue + 1;
-        }
-    }else if(gSelectValue > gAnswer){
-        if(gClosestAbove >= gSelectValue){
-            gClosestAbove = gSelectValue - 1;
-        }
-    } else {
-        // answer is correct & only option is now the correct answer
-        gClosestBelow = gSelectValue;
-        gClosestAbove = gSelectValue;
-        document.getElementById("gSelect").disabled = true;
-        document.getElementById("gm100").disabled = true;
-        document.getElementById("gm10").disabled = true;
-        document.getElementById("gm1").disabled = true;
-        document.getElementById("ga1").disabled = true;
-        document.getElementById("ga10").disabled = true;
-        document.getElementById("ga100").disabled = true;
-    }
-
-    // bSelect
-    if(bSelectValue < bAnswer){
-        // set guess color to too low
-        // check
-        if(bClosestBelow <= bSelectValue){
-            bClosestBelow = bSelectValue + 1;
-        }
-    }else if(bSelectValue > bAnswer){
-        if(bClosestAbove >= bSelectValue){
-            bClosestAbove = bSelectValue - 1;
-        }
-    } else {
-        // answer is correct & only option is now the correct answer
-        bClosestBelow = bSelectValue;
-        bClosestAbove = bSelectValue;
-        document.getElementById("bSelect").disabled = true;
-        document.getElementById("bm100").disabled = true;
-        document.getElementById("bm10").disabled = true;
-        document.getElementById("bm1").disabled = true;
-        document.getElementById("ba1").disabled = true;
-        document.getElementById("ba10").disabled = true;
-        document.getElementById("ba100").disabled = true;
-    }
-
-    var submissionBlock = document.createElement("DIV");
-    submissionBlock.className = "submissionBlock";
-
-    var submissionColor = document.createElement("DIV");
-    submissionColor.className = "submissionColor";
-    // submissionColor.innerText = "r: " + rSelectValue + "; g: " + gSelectValue + "; b: " + bSelectValue;
-    submissionColor.style.backgroundColor = "rgb(" + rSelectValue + "," + gSelectValue + "," + bSelectValue + ")";
-
-    var submissionText = document.createElement("DIV");
-    submissionText.className = "submissionText";
-    submissionText.innerText = "r: " + rSelectValue + "; g: " + gSelectValue + "; b: " + bSelectValue;
-    submissionText.style.color = setContrast(rSelectValue, gSelectValue, bSelectValue);
-
-    submissionColor.appendChild(submissionText);
-
-    submissionBlock.appendChild(submissionColor);
     
-    document.getElementById("previousAnswers").insertBefore(submissionBlock, document.getElementById("previousAnswers").firstChild);
+    // generate answer values
+    colordle.rAnswer = Math.floor(Math.random() * 256);
+    colordle.gAnswer = Math.floor(Math.random() * 256);
+    colordle.bAnswer = Math.floor(Math.random() * 256);
+    localStorage.setItem("colordle", JSON.stringify(colordle));
+} else {
+    // get answer values
+    var colordle = JSON.parse(localStorage.getItem("colordle"));
 
-    document.getElementById("rSelect").value = rClosestBelow;
-    document.getElementById("gSelect").value = gClosestBelow;
-    document.getElementById("bSelect").value = bClosestBelow;
-    // console.log(rClosestAbove);
-    // console.log(rClosestBelow);
-    // console.log(gClosestAbove);
-    // console.log(gClosestBelow);
-    // console.log(bClosestAbove);
-    // console.log(bClosestBelow);
+    colordle.guesses.forEach(element => {
+        var submissionBlock = document.createElement("DIV");
+        submissionBlock.className = "submissionBlock";
 
-    // disable form and display victory info
-    if(rSelectValue == rAnswer && gSelectValue == gAnswer && bSelectValue == bAnswer){
-        document.getElementById("submitButton").disabled = true;
+        var submissionColor = document.createElement("DIV");
+        submissionColor.className = "submissionColor";
+        submissionColor.style.backgroundColor = "rgb(" + element.r + "," + element.g + "," + element.b + ")";
 
-        var victory = document.createElement("DIV");
-        // victory.id = "victory";
-        victory.innerText = "You've done it! Shareable links and exports to be added soon.";
-        victory.style.textAlign = "center";
-        // victory.style.backgroundColor = "white";
-        victory.style.color = setContrast(rAnswer, gAnswer, bAnswer);
-        victory.classList = "text";
-        victory.style.textShadow = "1px 0px " + setContrastReverse(rAnswer, gAnswer, bAnswer);
-        document.body.insertBefore(victory, document.body.firstChild);
-        document.getElementById("rSelectLabel").innerText = "Red ("+rAnswer+")";
-        document.getElementById("gSelectLabel").innerText = "Green ("+gAnswer+")";
-        document.getElementById("bSelectLabel").innerText = "Blue ("+bAnswer+")";
-    }else{
-        if(rSelectValue == rAnswer){
-            document.getElementById("rSelectLabel").innerText = "Red ("+rAnswer+")";
-        }else{
-            document.getElementById("rSelectLabel").innerText = "Red ("+rClosestBelow+" - "+rClosestAbove+")";
-        }
-        if(gSelectValue == gAnswer){
-            document.getElementById("gSelectLabel").innerText = "Green ("+gAnswer+")";
-        }else{
-            document.getElementById("gSelectLabel").innerText = "Green ("+gClosestBelow+" - "+gClosestAbove+")";
-        }
-        if(bSelectValue == bAnswer){
-            document.getElementById("bSelectLabel").innerText = "Blue ("+bAnswer+")";
-        }else{
-            document.getElementById("bSelectLabel").innerText = "Blue ("+bClosestBelow+" - "+bClosestAbove+")";
-        }
-    }
-});
+        var submissionText = document.createElement("DIV");
+        submissionText.className = "submissionText";
+        submissionText.innerText = "r: " + element.r + "; g: " + element.g + "; b: " + element.b;
+        submissionText.style.color = setContrast(element.r, element.g, element.b);
 
+        colordle.guesses.push({ "r": element.r, "g": element.g, "b": element.g });
 
+        submissionColor.appendChild(submissionText);
 
-document.getElementById("form").addEventListener('submit', function(event) { event.preventDefault(); } );
+        submissionBlock.appendChild(submissionColor);
+        
+        document.getElementById("previousAnswers").insertBefore(submissionBlock, document.getElementById("previousAnswers").firstChild);
+    });
+}
 
-var previousAnswers = document.createElement("DIV");
-previousAnswers.id = "previousAnswers";
-document.body.append(previousAnswers);
+document.getElementById("rSelect").value = colordle.rClosestBelow;
+document.getElementById("gSelect").value = colordle.gClosestBelow;
+document.getElementById("bSelect").value = colordle.bClosestBelow;
+
+if(colordle.rClosestAbove == colordle.rAnswer){
+    document.getElementById("rSelectLabel").innerText = "Red ("+colordle.rAnswer+")";
+    document.getElementById("rSelect").disabled = true;
+    document.getElementById("rm100").disabled = true;
+    document.getElementById("rm10").disabled = true;
+    document.getElementById("rm1").disabled = true;
+    document.getElementById("ra1").disabled = true;
+    document.getElementById("ra10").disabled = true;
+    document.getElementById("ra100").disabled = true;
+}else{
+    document.getElementById("rSelectLabel").innerText = "Red ("+colordle.rClosestBelow+" - "+colordle.rClosestAbove+")";
+}
+if(colordle.gClosestAbove == colordle.gAnswer){
+    document.getElementById("gSelectLabel").innerText = "Green ("+colordle.gAnswer+")";
+    document.getElementById("gSelect").disabled = true;
+    document.getElementById("gm100").disabled = true;
+    document.getElementById("gm10").disabled = true;
+    document.getElementById("gm1").disabled = true;
+    document.getElementById("ga1").disabled = true;
+    document.getElementById("ga10").disabled = true;
+    document.getElementById("ga100").disabled = true;
+}else{
+    document.getElementById("gSelectLabel").innerText = "Green ("+colordle.gClosestBelow+" - "+colordle.gClosestAbove+")";
+}
+if(colordle.bClosestAbove == colordle.bAnswer){
+    document.getElementById("bSelectLabel").innerText = "Blue ("+colordle.bAnswer+")";
+    document.getElementById("bSelect").disabled = true;
+    document.getElementById("bm100").disabled = true;
+    document.getElementById("bm10").disabled = true;
+    document.getElementById("bm1").disabled = true;
+    document.getElementById("ba1").disabled = true;
+    document.getElementById("ba10").disabled = true;
+    document.getElementById("ba100").disabled = true;
+}else{
+    document.getElementById("bSelectLabel").innerText = "Blue ("+colordle.bClosestBelow+" - "+colordle.bClosestAbove+")";
+}
+
+if(colordle.rClosestAbove == colordle.rAnswer && colordle.gClosestAbove == colordle.gAnswer && colordle.bClosestAbove == colordle.bAnswer){
+    document.getElementById("submitButton").disabled = true;
+
+    var victory = document.createElement("DIV");
+    victory.innerText = "You've done it! Shareable links and exports to be added soon.";
+    victory.style.textAlign = "center";
+    victory.style.color = setContrast(colordle.rAnswer, colordle.gAnswer, colordle.bAnswer);
+    victory.classList = "text";
+    // victory.style.textShadow = "1px 0px " + setContrastReverse(colordle.rAnswer, colordle.gAnswer, colordle.bAnswer);
+    document.body.insertBefore(victory, document.body.firstChild);
+}
+
+// set background color to answer values
+document.body.style.backgroundColor = "rgb(" + colordle.rAnswer + "," + colordle.gAnswer + "," + colordle.bAnswer + ")";
 
 document.querySelectorAll(".text").forEach(element => {
-    element.style.color = setContrast(rAnswer, gAnswer, bAnswer);
-    // element.style.textShadow = "1px 0px " + setContrastReverse(rAnswer, gAnswer, bAnswer);
+    element.style.color = setContrast(colordle.rAnswer, colordle.gAnswer, colordle.bAnswer);
 });
 
 function setContrast(rSelectValue, gSelectValue, bSelectValue) {
@@ -440,55 +120,32 @@ function setContrastReverse(rSelectValue, gSelectValue, bSelectValue) {
     return textColour;
 }
 
-function setContrastSubtext(rSelectValue, gSelectValue, bSelectValue) {
-    const brightness = Math.round(((rSelectValue * 299) +
-                        (gSelectValue * 587) +
-                        (bSelectValue * 114)) / 1000);
-    const textColour = (brightness > 125) ? 'darkgrey' : 'lightgrey';
-    return textColour;
-}
-
-function setContrastSubtextReverse(rSelectValue, gSelectValue, bSelectValue) {
-    const brightness = Math.round(((rSelectValue * 299) +
-                        (gSelectValue * 587) +
-                        (bSelectValue * 114)) / 1000);
-    const textColour = (brightness > 125) ? 'lightgrey' : 'darkgrey';
-    return textColour;
-}
-
-
-function emptySelects(){
-    var rSelect = document.getElementById("rSelect");
-    var length = rSelect.options.length;
-    for (i = length-1; i >= 0; i--) {
-        rSelect.options[i] = null;
+// confirm/adjust value of red to be between upper and lower limits
+function checkInputRed(e){
+    if(e.value < colordle.rClosestBelow){
+        e.value = colordle.rClosestBelow;
     }
-    var gSelect = document.getElementById("gSelect");
-    var length = gSelect.options.length;
-    for (i = length-1; i >= 0; i--) {
-        gSelect.options[i] = null;
-    }
-    var bSelect = document.getElementById("bSelect");
-    var length = bSelect.options.length;
-    for (i = length-1; i >= 0; i--) {
-        bSelect.options[i] = null;
+    if(e.value > colordle.rClosestAbove){
+        e.value = colordle.rClosestAbove;
     }
 }
 
-function loadSelectOptions(selectObject, min, max){
-    for(let index=min; index<max; index++){
-        let option = document.createElement("OPTION");
-        option.nodeValue = index;
-        option.innerText = index;
-        selectObject.appendChild(option);
+// confirm/adjust value of green to be between upper and lower limits
+function checkInputGreen(e){
+    if(e.value < colordle.gClosestBelow){
+        e.value = colordle.gClosestBelow;
+    }
+    if(e.value > colordle.gClosestAbove){
+        e.value = colordle.gClosestAbove;
     }
 }
 
-
-
-
-
-
-
-
-
+// confirm/adjust value of blue to be between upper and lower limits
+function checkInputBlue(e){
+    if(e.value < colordle.bClosestBelow){
+        e.value = colordle.bClosestBelow;
+    }
+    if(e.value > colordle.bClosestAbove){
+        e.value = colordle.bClosestAbove;
+    }
+}

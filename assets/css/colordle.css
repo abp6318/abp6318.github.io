@@ -1,4 +1,4 @@
-
+/* Classes */
 .submissionColor{
     width:160px;
     height: 60px;
@@ -8,20 +8,16 @@
 }
 
 .submissionText{
-    /* width:max-content; */
     text-align: center;
     margin:auto;
 
 }
 
-/* *{
-    border:thin solid red;
-} */
-
 .text{
     font-family: 'Quicksand', sans-serif;
 }
 
+/* Elements */
 h1{
     font-size: 75px;
     margin-top: 10px;
@@ -31,7 +27,6 @@ h1{
 p{
     font-size: 24px;
     font-weight: 500;
-    /* width:475px; */
     max-width:825px;
     margin:auto;
     padding-bottom:20px;
@@ -41,24 +36,58 @@ body{
     text-align: center;
 }
 
-#previousAnswers{
-    margin:auto;
-    margin-top:20px;
-    width:max-content;
-}
-
 select{
     size: 50%;
 }
 
-/* Chrome, Safari, Edge, Opera */
+    /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* Firefox */
+    /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+button{
+    padding:5px 10px;
+    text-decoration: none;
+    border: none;
+    margin:0;
+    box-shadow: 1px 1px rgb(223, 223, 223);
+
+}
+
+button:active {
+    box-shadow: 0px 0px rgb(223, 223, 223);
+    transform: translateX(1px) translateY(1px);
+}
+
+.colorRow{
+    background-color: white;
+    padding:7px 20px;
+    width: max-content;
+    border-radius: 20px;
+    margin:auto;
+    margin-bottom:10px;
+    margin-top:2px;
+}
+
+#submitButton, #newGameButton{
+    padding:7px 20px;
+    border-radius: 20px;
+}
+
+input{
+    border:none;
+}
+
+/* IDs */
+#previousAnswers{
+    margin:auto;
+    margin-top:20px;
+    width:max-content;
 }
