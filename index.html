@@ -4,35 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colordle</title>
-    <link rel="stylesheet" href="./assets/css/colordle.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Aaron Putterman</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
+    <!-- <script>window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";</script> -->
 
-    <h1 class="text">Colordle</h1> 
-    <p class="text">Guess the background color by changing the red, green, and blue values. Each guess will automatically narrow down your remaining values.</p>
-    <form id="form">
-        <label for="rSelect" id="rSelectLabel" class="text">Red (0 - 255)</label><br>
-        <div class="colorRow">
-            <button id="rm100">-100</button> <button id="rm10">-10</button> <button id="rm1">-1</button> <input type="number" name="rSelect" id="rSelect" maxlength="3" onchange="checkInputRed(this);" value="0" min="0" max="255"> <button id="ra1">+1</button> <button id="ra10">+10</button> <button id="ra100">+100</button><br/>
+    <nav class="cyan darken-2" >
+        <div class="nav-wrapper container">
+            <a href="./index.html" class="brand-logo">Aaron Putterman</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="./index.html">Work</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./bookmarks.html">Bookmarks</a></li>
+                <li><a href="./assets/zips/AaronPutterman_Resume.pdf" target="_blank">Résumé</a></li>
+            </ul>
         </div>
-        <label for="rSelect" id="gSelectLabel" class="text">Green (0 - 255)</label><br>
-        <div class="colorRow">
-            <button id="gm100">-100</button> <button id="gm10">-10</button> <button id="gm1">-1</button> <input type="number" name="gSelect" id="gSelect" maxlength="3" onchange="checkInputGreen(this);" value="0" min="0" max="255"> <button id="ga1">+1</button> <button id="ga10">+10</button> <button id="ga100">+100</button><br/>
-        </div>
-        <label for="rSelect" id="bSelectLabel" class="text">Blue (0 - 255)</label><br>
-        <div class="colorRow">
-            <button id="bm100">-100</button> <button id="bm10">-10</button> <button id="bm1">-1</button> <input type="number" name="bSelect" id="bSelect" maxlength="3" onchange="checkInputBlue(this);" value="0" min="0" max="255"> <button id="ba1">+1</button> <button id="ba10">+10</button> <button id="ba100">+100</button><br/>
-        </div>
-        <input type="button" value="Guess Color" id="submitButton">
-        <button id="newGameButton">New Game</button>
-    </form>
-    <div id="previousAnswers"></div>
+    </nav>
+    <div class="container" id="workContainer"></div>
 
-    <script src="./assets/js/colordle.js"></script>
-    <script src="./assets/js/events.js"></script>
+    <script src="./assets/js/work.js"></script>
+    
 </body>
 </html>
