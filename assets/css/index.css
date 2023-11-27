@@ -1,0 +1,62 @@
+.rain-container {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #000; /* Background color */
+    overflow: hidden;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9)); /* Adjust the colors and opacity as needed */
+}
+
+.page-content {
+    /* border: thin solid blue; */
+
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    /* border: thin solid green; */
+
+    width: 500px;
+}
+
+.links {
+    /* border: thin solid yellow; */
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo {
+    /* border: thin solid red; */
+
+    background: transparent;
+    width: 500px;
+}
+  
+.drop {
+    width: 2px; /* Width of raindrop */
+    height: 60px; /* Height of raindrop */
+    background: rgba(255, 255, 255, 0.6); /* Raindrop color with opacity */
+    position: absolute;
+    animation: fall linear infinite;
+}
+  
+/* Animation */
+@keyframes fall {
+    0% {
+        transform: translateY(-100px); /* Initial position and angle */
+        opacity: 0; /* Starting opacity */
+    }
+    100% {
+        transform: translateY(100vh); /* Ending position and angle */
+        opacity: 1; /* Ending opacity */
+    }
+}

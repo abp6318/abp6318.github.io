@@ -2,36 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aaron Putterman</title>
-
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script type="module" src="https://js.arcgis.com/calcite-components/1.10.0/calcite.esm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.10.0/calcite.css" />
+    <script src="./assets/js/routing.js"></script>
+    <link rel="stylesheet" href="./assets/css/index.css">
 </head>
 <body>
-    <!-- <script>window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";</script> -->
+    <calcite-shell>
 
-    <nav class="cyan darken-2" >
-        <div class="nav-wrapper container">
-            <a href="./index.html" class="brand-logo">Aaron Putterman</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="./index.html">Work</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./bookmarks.html">Bookmarks</a></li>
-                <li><a href="./assets/zips/AaronPutterman_Resume.pdf" target="_blank">Résumé</a></li>
-            </ul>
+        <script>
+            let dropCount = 0;
+            function createRaindrop() {
+                const drop = document.createElement('div');
+                drop.classList.add('drop');
+                
+                const size = Math.random() * 3 + 1; // Randomize drop size
+                drop.style.width = `${size}px`;
+                drop.style.height = `${size * 8}px`; // Aspect ratio for drop length
+                
+                const duration = Math.random() * .6 + 0.06; // Randomize animation duration
+                drop.style.animationDuration = `${duration}s`;
+
+                const startPosition = Math.random() * 100; // Randomize horizontal starting position
+                drop.style.left = `${startPosition}%`;
+
+                document.querySelector('.rain-container').appendChild(drop);
+                dropCount = dropCount + 1;
+            }
+
+            const temp = setInterval(function() {
+                if (dropCount < 100) { createRaindrop(); }
+                else { clearInterval(temp); }
+            }, 100); // Adjust interval for drop creation
+        </script>
+
+        <div class="rain-container"></div>
+        <div class="page-content">
+            <main>
+                <img class="logo" src="./assets/imgs/portfolio-logo.svg" alt="logo">
+                <p>Web developer, animal lover, and advocate for education & sustainability.</p>
+                <div class="links">
+                    <i>
+                        <calcite-link 
+                            href="./work.html">
+                                Work
+                        </calcite-link>
+                    </i>
+                    <i>
+                        <calcite-link 
+                            href="https://www.linkedin.com/in/aaron-putterman/" 
+                            target="_blank" 
+                            icon-end="launch">
+                                LinkedIn
+                        </calcite-link>
+                    </i>
+                    <i>
+                        <calcite-link 
+                            href="https://github.com/abp6318"
+                            target="_blank" 
+                            icon-end="launch">
+                                GitHub
+                        </calcite-link>
+                    </i>
+                </div>
+            </main>
+
         </div>
-    </nav>
-    <div class="container" id="workContainer"></div>
 
-    <script src="./assets/js/work.js"></script>
-    
+    </calcite-shell>
 </body>
 </html>
