@@ -46,17 +46,39 @@ main {
     height: 60px; /* Height of raindrop */
     background: rgba(255, 255, 255, 0.6); /* Raindrop color with opacity */
     position: absolute;
-    animation: fall linear infinite;
 }
+
+.bottom-of-page {
+    animation: fallToBottomOfPage linear infinite;
+}
+
+.hit-umbrella {
+    animation: fallOnUmbrella linear infinite;
+}
+
+/* #umbrella { 
+    border: thin solid red;
+} */
   
 /* Animation */
-@keyframes fall {
+@keyframes fallToBottomOfPage {
     0% {
         transform: translateY(-100px); /* Initial position and angle */
         opacity: 0; /* Starting opacity */
     }
     100% {
         transform: translateY(100vh); /* Ending position and angle */
+        opacity: 1; /* Ending opacity */
+    }
+}
+
+@keyframes fallOnUmbrella {
+    0% {
+        transform: translateY(-100px); /* Initial position and angle */
+        opacity: 0; /* Starting opacity */
+    }
+    100% {
+        transform: translateY(30vh); /* Ending position and angle */
         opacity: 1; /* Ending opacity */
     }
 }

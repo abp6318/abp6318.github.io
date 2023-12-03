@@ -6,7 +6,7 @@
     <title>Aaron Putterman</title>
     <script type="module" src="https://js.arcgis.com/calcite-components/1.10.0/calcite.esm.js"></script>
     <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.10.0/calcite.css" />
-    <script src="./assets/js/routing.js"></script>
+    <!-- <script src="./assets/js/routing.js"></script> -->
     <link rel="stylesheet" href="./assets/css/index.css">
 </head>
 <body>
@@ -30,45 +30,87 @@
 
                 document.querySelector('.rain-container').appendChild(drop);
                 dropCount = dropCount + 1;
+
+                let raindropRect = drop.getBoundingClientRect();
+                let umbrellaRect = umbrella.getBoundingClientRect();
+
+                if (
+                    raindropRect.right >= umbrellaRect.left && // so the raindrops to the left of the umbrella aren't included
+                    raindropRect.left <= umbrellaRect.right // so the raindrops to the right of the umbrella aren't included
+                ) {
+                    drop.classList.add('hit-umbrella');
+                } else {
+                    drop.classList.add('bottom-of-page');
+                }                
             }
 
-            const temp = setInterval(function() {
+            const createRaindropInterval = setInterval(function() {
                 if (dropCount < 100) { createRaindrop(); }
-                else { clearInterval(temp); }
+                else { clearInterval(createRaindropInterval); }
             }, 100); // Adjust interval for drop creation
+
+            function checkCollision(drop, umbrella) {
+                // assign class
+                let raindropRect = drop.getBoundingClientRect();
+                let umbrellaRect = umbrella.getBoundingClientRect();
+
+                if (
+                    raindropRect.right >= umbrellaRect.left && // so the raindrops to the left of the umbrella aren't included
+                    raindropRect.left <= umbrellaRect.right // so the raindrops to the right of the umbrella aren't included
+                ) {
+                    try {
+                        drop.classList.remove('bottom-of-page');
+                    } catch {
+                        // nothin, just lazy
+                    }
+                    drop.classList.add('hit-umbrella');
+                } else {
+                    try {
+                        drop.classList.remove('hit-umbrella');
+                    } catch {
+                        // nothin, just lazy
+                    }
+                    drop.classList.add('bottom-of-page');
+                }
+            }
+
+            // Continuously check for collision and update raindrop positions
+            window.addEventListener('resize', function() {
+                let raindrops = document.querySelectorAll('.drop');
+                let umbrella = document.getElementById('umbrella');
+
+                raindrops.forEach(raindrop => {
+                    checkCollision(raindrop, umbrella);
+                });
+            }); // Adjust interval for smoother animation
         </script>
 
         <div class="rain-container"></div>
         <div class="page-content">
             <main>
-                <img class="logo" src="./assets/imgs/portfolio-logo.svg" alt="logo">
+                <img class="logo" id="umbrella" src="./assets/imgs/portfolio-logo.svg" alt="logo">
                 <p>Web developer, animal lover, and advocate for education & sustainability.</p>
                 <div class="links">
-                    <i>
-                        <calcite-link 
-                            href="./work.html">
-                                Work
-                        </calcite-link>
-                    </i>
-                    <i>
-                        <calcite-link 
-                            href="https://www.linkedin.com/in/aaron-putterman/" 
-                            target="_blank" 
-                            icon-end="launch">
-                                LinkedIn
-                        </calcite-link>
-                    </i>
-                    <i>
-                        <calcite-link 
-                            href="https://github.com/abp6318"
-                            target="_blank" 
-                            icon-end="launch">
-                                GitHub
-                        </calcite-link>
-                    </i>
+                    <calcite-link 
+                        href="./work.html">
+                            Work
+                    </calcite-link>
+                
+                    <calcite-link 
+                        href="https://www.linkedin.com/in/aaron-putterman/" 
+                        target="_blank" 
+                        icon-end="launch">
+                            LinkedIn
+                    </calcite-link>
+                
+                    <calcite-link 
+                        href="https://github.com/abp6318"
+                        target="_blank" 
+                        icon-end="launch">
+                            GitHub
+                    </calcite-link>
                 </div>
             </main>
-
         </div>
 
     </calcite-shell>
