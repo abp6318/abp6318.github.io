@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTacTics</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Column: Hints -->
+        <div class="hints">
+            <h1>TikTacTics</h1>
+        
+            <ol>
+                <li>Mr. Johnson himself</li>
+                <li>At your lowest point</li>
+                <li>Queen, Kiss and Nirvana</li>
+                <li>Where the pilgrims landed</li>
+            </ol>
+
+            <br>
+            <hr>
+            <!-- <br> -->
+            <h2>Rules</h2>
+            <ol>
+                <li>Each clue has an exactly two word answer</li>
+                <li>Each answer shares a <em>common word</em></li>
+                <li>The <em>common word</em> goes in the center of the cross</li>
+                <li>The answer to each clue could go in any direction, so long as the two words can be read either left-to-right or top-to-bottom</li>
+            </ol>
+        </div>
+
+        <!-- Right Column: 3x3 Grid -->
+        <div class="grid-container">
+            <div></div>
+            <input id="north" type="text" class="input-slot" placeholder="North">
+            <div></div>
+
+            <input id="west" type="text" class="input-slot" placeholder="West">
+            <input id="center" type="text" class="input-slot" placeholder="Center">
+            <input id="east" type="text" class="input-slot" placeholder="East">
+
+            <div></div>
+            <input id="south" type="text" class="input-slot" placeholder="South">
+            <div></div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
